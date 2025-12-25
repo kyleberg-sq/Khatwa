@@ -1,84 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Physical Therapy</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+  <title>Reach | العلاج الطبيعي المنزلي</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="bg-gray-100 text-gray-900">
+<body>
 
-  <header class="bg-white shadow">
-    <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
-      <h1 class="text-2xl font-bold">PhysioAtHome</h1>
-      <nav class="space-x-4">
-        <a href="#services" class="hover:underline">Services</a>
-        <a href="#order" class="hover:underline">Order</a>
-      </nav>
+<nav class="navbar">
+  <a class="btn" href="login.html">تسجيل الدخول</a>
+  <h3 class="logo">Reach</h3>
+</nav>
+
+<header class="hero">
+  <div class="hero-overlay">
+    <h1>العلاج الطبيعي الاحترافي في منزلك</h1>
+    <p>احجز أخصائي علاج طبيعي مرخّص بالساعة، يصل إلى باب منزلك</p>
+    <a class="btn" href="login.html">ابدأ الآن</a>
+  </div>
+</header>
+
+<section class="steps">
+  <h2>نفذ أعمالك بسهولة وأمان</h2>
+
+  <div class="step">
+    <h3>تصفح الخدمات</h3>
+    <p>ابحث عن الخدمة التي تحتاجها باستخدام مربع البحث أو عبر التصنيفات</p>
+  </div>
+
+  <div class="step">
+    <h3>اطلب الخدمة</h3>
+    <p>راجع وصف الخدمة وتقييمات العملاء ثم اطلبها لفتح التواصل</p>
+  </div>
+
+  <div class="step">
+    <h3>استلم خدمتك</h3>
+    <p>تواصل مع الأخصائي مباشرة حتى استلام الخدمة كاملة</p>
+  </div>
+</section>
+
+<section class="reasons">
+  <h2>لماذا Reach خيارك الأفضل؟</h2>
+
+  <div class="reason-grid">
+    <div class="reason">
+      <h3>تخصصات متعددة</h3>
+      <p>عشرات التخصصات العلاجية لتناسب جميع الحالات</p>
     </div>
-  </header>
 
-  <section class="bg-blue-600 text-white py-20">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">Physical Therapy at Your Doorstep</h2>
-      <p class="text-lg mb-6">Licensed therapists. Home visits. Simple booking.</p>
-      <a href="#order" class="bg-white text-blue-600 px-6 py-3 rounded font-semibold">Book Now</a>
+    <div class="reason">
+      <h3>أسعار واضحة</h3>
+      <p>أسعار عادلة وشفافة بدون أي رسوم خفية</p>
     </div>
-  </section>
 
-  <section id="services" class="py-16">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
-      <div class="bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-bold mb-2">Post-Injury Rehab</h3>
-        <p>Personal recovery programs at home.</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-bold mb-2">Elderly Care</h3>
-        <p>Safe and guided movement therapy.</p>
-      </div>
-      <div class="bg-white p-6 rounded shadow">
-        <h3 class="text-xl font-bold mb-2">Sports Therapy</h3>
-        <p>Strength and mobility restoration.</p>
-      </div>
+    <div class="reason">
+      <h3>دعم على مدار الساعة</h3>
+      <p>فريق جاهز للرد على الاستفسارات وحل المشكلات</p>
     </div>
-  </section>
 
-  <section id="order" class="py-16 bg-white">
-    <div class="max-w-xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6 text-center">Request a Therapist</h2>
-
-      <form id="orderForm" class="space-y-4">
-        <input required class="w-full border p-3 rounded" placeholder="Full Name">
-        <input required class="w-full border p-3 rounded" placeholder="Phone Number">
-        <input required class="w-full border p-3 rounded" placeholder="Address">
-        <select class="w-full border p-3 rounded">
-          <option>Post-Injury Rehab</option>
-          <option>Elderly Care</option>
-          <option>Sports Therapy</option>
-        </select>
-        <button class="w-full bg-blue-600 text-white py-3 rounded font-semibold">Submit Order</button>
-      </form>
-
-      <p id="success" class="hidden text-green-600 text-center mt-4 font-semibold">
-        Order submitted successfully
-      </p>
+    <div class="reason">
+      <h3>ضمان الحقوق</h3>
+      <p>نضمن حقوقك المالية واستلام الخدمة كما هو متفق</p>
     </div>
-  </section>
 
-  <footer class="bg-gray-800 text-white py-6 text-center">
-    © 2025 PhysioAtHome
-  </footer>
+    <div class="reason">
+      <h3>تعاملات آمنة</h3>
+      <p>توثيق الأخصائيين لضمان الجدية والمصداقية</p>
+    </div>
 
-  <script>
-    const form = document.getElementById("orderForm")
-    const success = document.getElementById("success")
+    <div class="reason">
+      <h3>مختصون محترفون</h3>
+      <p>ملفات شخصية توضح الخبرات والتقييمات السابقة</p>
+    </div>
+  </div>
+</section>
 
-    form.addEventListener("submit", e => {
-      e.preventDefault()
-      success.classList.remove("hidden")
-      form.reset()
+<section class="faq">
+  <h2>الأسئلة الشائعة</h2>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>كيف يتم حجز الأخصائي؟</span>
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-answer">
+      يتم الحجز بسهولة بعد تسجيل الدخول واختيار الخدمة المناسبة.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>هل الدفع آمن؟</span>
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-answer">
+      نعم، جميع التعاملات آمنة ويمكن الدفع نقدًا أو إلكترونيًا.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-question">
+      <span>هل يمكن إلغاء الحجز؟</span>
+      <span class="arrow">⌄</span>
+    </div>
+    <div class="faq-answer">
+      يمكن الإلغاء وفق سياسة الإلغاء الموضحة أثناء الحجز.
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-content">
+    <p>© 2025 Reach — جميع الحقوق محفوظة</p>
+    <div class="socials">
+      <a href="#">X</a>
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+    </div>
+    <p class="designer">تصميم وتطوير: Reach Team</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      q.parentElement.classList.toggle('open')
     })
-  </script>
+  })
+</script>
 
 </body>
 </html>
