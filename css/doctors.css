@@ -1,0 +1,158 @@
+/* ================= DOCTORS PAGE ================= */
+
+:root {
+  --cyan: #00bcd4;
+  --dark-cyan: #0f766e;
+  --light-gray: #f9fafb;
+  --gray: #f2f4f5;
+}
+
+nav:not(.navbar) {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  background: var(--cyan);
+  color: white;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: var(--dark-cyan);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 20px;
+  font-size: 1em;
+  z-index: 1000;
+}
+
+.list-header {
+  padding: 60px 20px 30px;
+  text-align: center;
+  background-color: var(--cyan);
+}
+
+.list-header h1 {
+  font-size: 32px;
+  color: white;
+}
+
+.list-header p {
+  font-size: 18px;
+  color: white;
+  margin-top: 8px;
+}
+
+.doctors-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 30px 20px 60px;
+  align-items: center;
+}
+
+.doctor-card {
+  width: 90%; /* takes most of the screen width */
+  max-width: 800px; /* optional: limit too wide on large screens */
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.doctor-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.doctor-info {
+  padding: 20px;
+  text-align: right;
+  flex: 1;
+}
+
+.doctor-info h3 {
+  color: var(--dark-cyan);
+  margin-bottom: 6px;
+}
+
+.doctor-info .work {
+  font-size: 15px;
+  color: #777;
+  margin-bottom: 6px;
+}
+
+.doctor-info .rating {
+  font-size: 14px;
+  color: #f5a623; /* gold for stars */
+  margin-bottom: 8px;
+}
+
+.doctor-info .conditions {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.read-bio {
+  position: relative;
+  font-size: 14px;
+  color: var(--cyan);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+}
+
+.bio-popup {
+  display: none;
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  background: white;
+  color: #333;
+  padding: 12px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 13px;
+  line-height: 1.4;
+  z-index: 10;
+}
+
+.read-bio:hover .bio-popup {
+  display: block;
+}
+
+.footer {
+  background: #111;
+  color: #ccc;
+  padding: 40px 0 16px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .list-header h1 { font-size: 28px; }
+  .list-header p { font-size: 16px; }
+}
+
+@media (max-width: 600px) {
+  .list-header h1 { font-size: 24px; }
+  .list-header p { font-size: 15px; }
+  .doctor-card img { height: 180px; }
+}
