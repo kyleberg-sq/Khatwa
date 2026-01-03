@@ -123,14 +123,25 @@ body {
 }
 
 .footer {
-  color: #000000;
-  padding: 50px 0;
+  background: #111;
+  color: #ccc;
+  padding: 40px 0 16px;
   text-align: center;
-  width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-  padding-bottom: 16px;
   font-size: 16px;
+}
+
+.footer .socials a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.footer .socials a:hover {
+  color: #00bcd4;
+  transform: translateY(-2px);
 }
 
 /* Responsive */

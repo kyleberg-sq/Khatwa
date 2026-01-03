@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حجز موعد | Khatwa</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<script>
+  if (localStorage.getItem('isLoggedIn') !== 'true') {
+    window.location.href = 'login.html'
+  }
+</script>
+
+<nav class="navbar">
+  <a class="btn" href="doctors.html">رجوع</a>
+  <h3 class="logo">Khatwa</h3>
+</nav>
+
+<section class="appointments">
+  <div class="doctor-page">
+
+    <div class="doctor-profile">
+      <img id="doctor-img">
+      <h2 id="doctor-name"></h2>
+      <p class="work" id="doctor-work"></p>
+      <p class="desc" id="doctor-desc"></p>
+    </div>
+
+    <div class="appointment-card booking-card">
+      <h3>حجز موعد</h3>
+
+      <label>📅 اختر التاريخ</label>
+      <input type="date" id="date">
+
+      <label>⏰ اختر الوقت</label>
+      <input type="time" id="time">
+
+      <button class="btn" onclick="book()">تأكيد الحجز</button>
+    </div>
+
+  </div>
+</section>
+
+<section class="doctor-details">
+  <h2>نبذة عن الطبيب</h2>
+  <p id="doctor-about"></p>
+
+  <h2>مجالات التركيز</h2>
+  <ul id="doctor-focus"></ul>
+
+  <h2>اللغات</h2>
+  <p id="doctor-languages"></p>
+
+  <h2>الأسئلة الشائعة</h2>
+
+  <div class="faq-item">
+    <h4>هل يمكن حجز موعد أونلاين؟</h4>
+    <p>نعم، يمكن حجز موعد بسهولة من خلال المنصة.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>هل الطبيب يستقبل مرضى جدد؟</h4>
+    <p>نعم، الطبيب متاح لاستقبال مرضى جدد.</p>
+  </div>
+
+  <div class="faq-item">
+    <h4>ما أكثر الحالات التي يعالجها الطبيب؟</h4>
+    <p id="doctor-faq-focus"></p>
+  </div>
+
+  <div class="faq-item">
+    <h4>ما اللغات التي يتحدثها الطبيب؟</h4>
+    <p id="doctor-faq-lang"></p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="socials">
+    <a href="#">X</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+  <p class="designer">تصميم وتطوير: @criticar_idk</p>
+  <p>© 2025 Khatwa — جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+  const doctors = {
+    ahmad: {
+      name: "د. أحمد الخطيب",
+      work: "مستشفى التخصصي – عمّان",
+      desc: "إصابات رياضية، آلام الظهر، تأهيل بعد الجراحة",
+      img: "assets/doctor1.webp",
+      about: "خبرة أكثر من 10 سنوات في العلاج الطبيعي وإعادة التأهيل.",
+      focus: ["إصابات رياضية", "آلام الظهر", "تأهيل بعد الجراحة"],
+      languages: "العربية، الإنجليزية"
+    },
+    reem: {
+      name: "أ. ريم العواملة",
+      work: "مركز التوازن – السلط",
+      desc: "العلاج الحركي، آلام المفاصل",
+      img: "assets/doctor2.webp",
+      about: "متخصصة في العلاج الحركي وتأهيل المفاصل.",
+      focus: ["آلام المفاصل", "العلاج الحركي"],
+      languages: "العربية"
+    },
+    sara: {
+      name: "أ. سارة النجار",
+      work: "مركز الشفاء – إربد",
+      desc: "تأهيل عصبي، كبار السن",
+      img: "assets/doctor3.webp",
+      about: "خبرة في التأهيل العصبي والعلاج الحركي لكبار السن.",
+      focus: ["تأهيل عصبي", "كبار السن"],
+      languages: "العربية، الإنجليزية"
+    },
+    layla: {
+      name: "أ. ليلى الحوراني",
+      work: "عيادة التوازن – الزرقاء",
+      desc: "العلاج اليدوي، آلام الرقبة",
+      img: "assets/doctor4.webp",
+      about: "متخصصة في العلاج اليدوي وحالات العمود الفقري.",
+      focus: ["العلاج اليدوي", "آلام الرقبة"],
+      languages: "العربية"
+    }
+  }
+
+  const id = new URLSearchParams(location.search).get('id')
+  const doctor = doctors[id]
+  if (!doctor) location.href = 'doctors.html'
+
+  doctor.focus.forEach(f => {
+    const li = document.createElement('li')
+    li.innerText = f
+    document.getElementById('doctor-focus').appendChild(li)
+  })
+
+  document.getElementById('doctor-name').innerText = doctor.name
+  document.getElementById('doctor-work').innerText = doctor.work
+  document.getElementById('doctor-desc').innerText = doctor.desc
+  document.getElementById('doctor-img').src = doctor.img
+  document.getElementById('doctor-about').innerText = doctor.about
+  document.getElementById('doctor-languages').innerText = doctor.languages
+  document.getElementById('doctor-faq-focus').innerText = doctor.focus.join('، ')
+  document.getElementById('doctor-faq-lang').innerText = doctor.languages
+
+  function book() {
+    const date = document.getElementById('date').value
+    const time = document.getElementById('time').value
+    if (!date || !time) return alert('يرجى اختيار التاريخ والوقت')
+
+    const appointments = JSON.parse(localStorage.getItem('appointments')) || []
+    appointments.push({
+      id: Date.now(),
+      doctor: doctor.name,
+      date,
+      time,
+      status: 'upcoming'
+    })
+    localStorage.setItem('appointments', JSON.stringify(appointments))
+    location.href = 'home.html'
+  }
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const question = item.querySelector('h4');
+    question.addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+</script>
+
+</body>
+</html>
