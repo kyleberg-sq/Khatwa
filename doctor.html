@@ -94,34 +94,34 @@
       work: "مستشفى التخصصي – عمّان",
       desc: "إصابات رياضية، آلام الظهر، تأهيل بعد الجراحة",
       img: "assets/doctor1.webp",
-      about: "خبرة أكثر من 10 سنوات في العلاج الطبيعي وإعادة التأهيل.",
+      about: "أخصائي في الإصابات الرياضية وآلام الظهر، مع خبرة واسعة في التأهيل بعد الجراحة. يركز على استعادة الحركة والقوة بشكل آمن وفعال، ويقدّم خطط علاجية شخصية تهدف لتحسين جودة حياة المرضى بسرعة واستدامة. يجمع بين الخبرة الطبية الدقيقة والتواصل الواضح مع المرضى لضمان فهم كامل للعلاج ومراحله.",
       focus: ["إصابات رياضية", "آلام الظهر", "تأهيل بعد الجراحة"],
       languages: "العربية، الإنجليزية"
     },
     reem: {
-      name: "أ. ريم العواملة",
+      name: "د. ريم العواملة",
       work: "مركز التوازن – السلط",
       desc: "العلاج الحركي، آلام المفاصل",
       img: "assets/doctor2.webp",
-      about: "متخصصة في العلاج الحركي وتأهيل المفاصل.",
+      about: "متخصصة في العلاج الحركي وآلام المفاصل، تركز على استعادة الحركة الطبيعية وتحسين القدرة الوظيفية للمرضى. تقدّم برامج علاجية فردية تهدف لتخفيف الألم وتعزيز اللياقة الحركية، مع متابعة دقيقة لضمان نتائج مستدامة وتحسين جودة الحياة.",
       focus: ["آلام المفاصل", "العلاج الحركي"],
       languages: "العربية"
     },
     sara: {
-      name: "أ. سارة النجار",
+      name: "د. سارة النجار",
       work: "مركز الشفاء – إربد",
       desc: "تأهيل عصبي، كبار السن",
-      img: "assets/doctor3.webp",
-      about: "خبرة في التأهيل العصبي والعلاج الحركي لكبار السن.",
+      img: "assets/doctor3.jpg",
+      about: "متخصصة في التأهيل العصبي ورعاية كبار السن، تركز على تعزيز الاستقلالية وجودة الحياة للمرضى. تقدم برامج علاجية مخصصة تهدف لتحسين الحركة والقدرات الذهنية والوظيفية، مع متابعة دقيقة لضمان تحقيق أفضل النتائج بشكل آمن ومستدام.",
       focus: ["تأهيل عصبي", "كبار السن"],
       languages: "العربية، الإنجليزية"
     },
     layla: {
-      name: "أ. ليلى الحوراني",
+      name: "د. ليلى الحوراني",
       work: "عيادة التوازن – الزرقاء",
       desc: "العلاج اليدوي، آلام الرقبة",
       img: "assets/doctor4.webp",
-      about: "متخصصة في العلاج اليدوي وحالات العمود الفقري.",
+      about: "متخصصة في العلاج اليدوي وآلام الرقبة، تركز على تخفيف الألم واستعادة الحركة الطبيعية للعمود الفقري. تقدّم برامج علاجية مخصصة تهدف لتحسين المرونة والقوة، مع متابعة دقيقة لضمان نتائج فعّالة وطويلة الأمد.",
       focus: ["العلاج اليدوي", "آلام الرقبة"],
       languages: "العربية"
     }
@@ -147,21 +147,28 @@
   document.getElementById('doctor-faq-lang').innerText = doctor.languages
 
   function book() {
-    const date = document.getElementById('date').value
-    const time = document.getElementById('time').value
-    if (!date || !time) return alert('يرجى اختيار التاريخ والوقت')
+  const date = document.getElementById('date').value;
+  const time = document.getElementById('time').value;
+  if (!date || !time) return alert('يرجى اختيار التاريخ والوقت');
 
-    const appointments = JSON.parse(localStorage.getItem('appointments')) || []
-    appointments.push({
-      id: Date.now(),
-      doctor: doctor.name,
-      date,
-      time,
-      status: 'upcoming'
-    })
-    localStorage.setItem('appointments', JSON.stringify(appointments))
-    location.href = 'home.html'
+  const selectedDateTime = new Date(`${date}T${time}`);
+  const now = new Date();
+
+  if (selectedDateTime < now) {
+    return alert('لا يمكنك حجز موعد في الماضي');
   }
+
+  const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+  appointments.push({
+    id: Date.now(),
+    doctor: doctor.name,
+    date,
+    time,
+    status: 'upcoming'
+  });
+  localStorage.setItem('appointments', JSON.stringify(appointments));
+  location.href = 'home.html';
+}
 
   // FAQ toggle
   document.querySelectorAll('.faq-item').forEach(item => {

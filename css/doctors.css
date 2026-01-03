@@ -7,6 +7,7 @@
   --gray: #f2f4f5;
 }
 
+/* NAVBAR */
 nav:not(.navbar) {
   display: flex;
   justify-content: space-between;
@@ -27,6 +28,7 @@ nav:not(.navbar) {
   z-index: 1000;
 }
 
+/* HEADER */
 .list-header {
   padding: 60px 20px 30px;
   text-align: center;
@@ -44,6 +46,7 @@ nav:not(.navbar) {
   margin-top: 8px;
 }
 
+/* DOCTORS LIST */
 .doctors-list {
   display: flex;
   flex-direction: column;
@@ -53,8 +56,8 @@ nav:not(.navbar) {
 }
 
 .doctor-card {
-  width: 90%; /* takes most of the screen width */
-  max-width: 800px; /* optional: limit too wide on large screens */
+  width: 90%;
+  max-width: 800px;
   display: flex;
   flex-direction: row;
   background: white;
@@ -64,6 +67,7 @@ nav:not(.navbar) {
   text-decoration: none;
   color: inherit;
   transition: transform 0.2s, box-shadow 0.2s;
+  align-items: center;
 }
 
 .doctor-card:hover {
@@ -71,17 +75,21 @@ nav:not(.navbar) {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
+/* DOCTOR IMAGE */
 .doctor-card img {
-  width: 200px;
-  height: 200px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   flex-shrink: 0;
+  border-radius: 12px 0 0 12px;
+  margin: 0;
 }
 
+/* DOCTOR INFO */
 .doctor-info {
   padding: 20px;
-  text-align: right;
   flex: 1;
+  text-align: right;
 }
 
 .doctor-info h3 {
@@ -97,7 +105,7 @@ nav:not(.navbar) {
 
 .doctor-info .rating {
   font-size: 14px;
-  color: #f5a623; /* gold for stars */
+  color: #f5a623;
   margin-bottom: 8px;
 }
 
@@ -137,6 +145,7 @@ nav:not(.navbar) {
   display: block;
 }
 
+/* FOOTER */
 .footer {
   background: #111;
   color: #ccc;
@@ -165,8 +174,26 @@ nav:not(.navbar) {
   .list-header p { font-size: 16px; }
 }
 
+@media (max-width: 768px) {
+  .doctor-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .doctor-card img {
+    width: 140px;
+    height: 140px;
+    border-radius: 12px;
+  }
+
+  .doctor-info {
+    text-align: center;
+    padding: 15px 10px;
+  }
+}
+
 @media (max-width: 600px) {
   .list-header h1 { font-size: 24px; }
   .list-header p { font-size: 15px; }
-  .doctor-card img { height: 180px; }
+  .doctor-card img { height: 120px; width: 120px; }
 }

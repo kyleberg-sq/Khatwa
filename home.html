@@ -75,33 +75,41 @@
 </footer>
 
 <script>
-  const name = localStorage.getItem('userName') || 'مستخدم'
-  document.getElementById('welcome').innerText = `مرحبًا بك ${name} 👋`
+  function logout() {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('userName'); // optional: clear name too
+    window.location.href = 'login.html';
+  }
 
-  let appointments = JSON.parse(localStorage.getItem('appointments')) || []
-  const today = new Date().toISOString().split('T')[0]
+  // Show user name
+  const userName = localStorage.getItem('userName') || "مستخدم";
+  document.getElementById('welcome').innerText = `مرحباً، ${userName}!`;
 
-  appointments.forEach(a => {
-    if (a.date < today && a.status === 'upcoming') a.status = 'completed'
-  })
+  const list = document.getElementById('appointments-list');
+  let appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+  const today = new Date().toISOString().split('T')[0];
 
-  localStorage.setItem('appointments', JSON.stringify(appointments))
+  appointments = appointments.map(a => {
+    if (a.date < today && a.status === 'upcoming') a.status = 'completed';
+    return a;
+  });
 
-  const list = document.getElementById('appointments-list')
-  const upcoming = appointments.filter(a => a.status === 'upcoming')
+  localStorage.setItem('appointments', JSON.stringify(appointments));
 
+  const upcoming = appointments.filter(a => a.status === 'upcoming');
+
+  list.innerHTML = '';
   if (!upcoming.length) {
     list.innerHTML = `
       <p class="empty">
         لا يوجد مواعيد قادمة<br><br>
         <a class="btn" href="doctors.html">احجز موعد جديد</a>
       </p>
-    `
+    `;
   } else {
-    list.innerHTML = ''
     upcoming.forEach(a => {
-      const div = document.createElement('div')
-      div.className = 'appointment-card'
+      const div = document.createElement('div');
+      div.className = 'appointment-card';
       div.innerHTML = `
         <h3>${a.doctor}</h3>
         <p>📅 ${a.date}</p>
@@ -110,35 +118,27 @@
           <button onclick="done(${a.id})">تمت الجلسة</button>
           <button onclick="cancel(${a.id})">إلغاء</button>
         </div>
-      `
-      list.appendChild(div)
-    })
+      `;
+      list.appendChild(div);
+    });
   }
 
-  document.getElementById('upcoming-count').innerText = upcoming.length
+  document.getElementById('upcoming-count').innerText = upcoming.length;
   document.getElementById('completed-count').innerText =
-    appointments.filter(a => a.status === 'completed').length
-
+    appointments.filter(a => a.status === 'completed').length;
   document.getElementById('last-appointment').innerText =
-    appointments.length ? appointments[appointments.length - 1].date : '—'
+    appointments.length ? appointments[appointments.length - 1].date : '—';
 
   function done(id) {
-    appointments = appointments.map(a =>
-      a.id === id ? { ...a, status: 'completed' } : a
-    )
-    localStorage.setItem('appointments', JSON.stringify(appointments))
-    location.reload()
+    appointments = appointments.map(a => a.id === id ? { ...a, status: 'completed' } : a);
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+    location.reload();
   }
 
   function cancel(id) {
-    appointments = appointments.filter(a => a.id !== id)
-    localStorage.setItem('appointments', JSON.stringify(appointments))
-    location.reload()
-  }
-
-  function logout() {
-    localStorage.clear()
-    location.href = 'login.html'
+    appointments = appointments.filter(a => a.id !== id);
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+    location.reload();
   }
 </script>
 
