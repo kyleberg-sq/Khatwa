@@ -197,3 +197,13 @@ nav:not(.navbar) {
   .list-header p { font-size: 15px; }
   .doctor-card img { height: 120px; width: 120px; }
 }
+
+@media (max-width: 600px) {
+  .site-name {
+    font-size: 1.2em;
+  }
+
+  .logo img {
+    height: 56px;
+  }
+}

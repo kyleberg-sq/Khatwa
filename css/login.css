@@ -26,9 +26,24 @@ body {
 }
 
 .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  direction: ltr;
+  text-decoration: none;
   color: white;
-  font-size: 1.6em;
+}
+
+.logo img {
+  height: 70px;
+  width: auto;
+  display: block;
+}
+
+.site-name {
+  font-size: 1.4em;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .navbar .logo img {
@@ -165,5 +180,15 @@ body {
   .form-card input, .form-card button {
     font-size: 16px;
     padding: 14px 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-name {
+    font-size: 1.2em;
+  }
+
+  .logo img {
+    height: 56px;
   }
 }
